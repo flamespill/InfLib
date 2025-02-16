@@ -1,0 +1,16 @@
+local Plugin = {
+	["PluginName"] = "TestPlugin";
+	["PluginDescription"] = "TestPlugin";
+	["Commands"] = {
+		["InfLib"] = {
+			["ListName"] = "Test";
+			["Description"] = "Test test boom";
+			["Aliases"] = {"Test"},
+			["Function"] = function()
+				notify("Test",'Tested')
+			end
+		}
+	}
+}
+
+return Plugin
