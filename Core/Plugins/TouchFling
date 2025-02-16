@@ -11,7 +11,7 @@ local Plugin = {
                 local RunService = game:GetService("RunService")
                 getgenv().TouchFling = not getgenv().TouchFling
                 if getgenv().TouchFling then
-                    notify("Rizz Notif", "TouchFling is now on.")
+                    notify("TouchFling", "TouchFling is now on.")
                     while getgenv().TouchFling do
                         if speaker.Character and speaker.Character:FindFirstChild("HumanoidRootPart") then
                             local rootPart = speaker.Character.HumanoidRootPart
