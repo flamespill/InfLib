@@ -1,4 +1,5 @@
 local Plugin = {
+	["PluginCreator"] = "flamespill";
 	["PluginName"] = "TestPlugin";
 	["PluginDescription"] = "TestPlugin";
 	["Commands"] = {
