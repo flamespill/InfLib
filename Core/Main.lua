@@ -164,7 +164,7 @@ local function CreateGUI()
 	local CreditsTab = self.TabHolder:WaitForChild("Credits")
 	Tab_CreateText(CreditsTab, "<b>flamespill</b> — Founder of InfLib")
 	Tab_CreateLine(CreditsTab)
-	Tab_CreateText(CreditsTab, "<b>Kaizerfox</b> — Founder of Infinite Store, InfLib‘s Inspiration!")
+	Tab_CreateText(CreditsTab, "<b>Infinite Store</b> — The project that inspired InfLib!")
 	Tab_CreateLine(CreditsTab)
 	Tab_CreateText(CreditsTab, "<b>All Plugin Creators</b> — Thank you for being awesome!")
 
