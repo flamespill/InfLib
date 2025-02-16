@@ -1,5 +1,6 @@
 # InfLib (STILL IN DEVELOPMENT, UNUSABLE)
 ### A library packed with Infinite Yield plugins, ready for instant download with just a click.
+### [Join the Discord!](https://discord.gg/nfkfKqUbGC/)
 ###### *Inspired by Kaizerfox‘s Infinite Store*
 
 ## How to Download
