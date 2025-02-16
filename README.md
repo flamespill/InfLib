@@ -1,5 +1,5 @@
 # InfLib (STILL IN DEVELOPMENT, UNUSABLE)
-### A library packed with Infinite Yield plugins and commands, ready for instant download with just a click.
+### A library packed with Infinite Yield plugins, ready for instant download with just a click.
 ###### *Inspired by Kaizerfox‘s Infinite Store*
 
 ## How to Download
