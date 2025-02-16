@@ -158,6 +158,8 @@ local function CreateGUI()
 	Tab_CreateLine(HomeTab)
 	Tab_CreateText(HomeTab, "Would you like to submit your plugin, get your plugin removed, or report a bug?\nJoin the Discord!")
 	Tab_CreateText(HomeTab, "<b>"..DiscordLink.."</b>")
+	Tab_CreateLine(HomeTab)
+	Tab_CreateText(HomeTab, "This project is in desperate need of more plugins, please join the Discord and submit a plugin if you want to help the project.")
 
 	local CreditsTab = self.TabHolder:WaitForChild("Credits")
 	Tab_CreateText(CreditsTab, "<b>flamespill</b> — Founder of InfLib")
