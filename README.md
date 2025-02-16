@@ -6,6 +6,7 @@
 ## How to Download
 ###### If not already done, go to your File Explorer > View and enable "File name extensions"
 ##### - Go to your exploit‘s "workspace" folder then add a file in it called "InfLib.txt"
+###### If you cannot find your workspace folder, do not beg for help, ask a more experienced friend or finally decide to be more independent and find it yourself.
 ##### - Open it and put in this script:
 ```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()```
 ##### - Rename the file from "InfLib.txt" to "InfLib.iy", a pop-up will appear asking if you really want to change the filename extension, press Yes
