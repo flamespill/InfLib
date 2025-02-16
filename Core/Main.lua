@@ -313,11 +313,11 @@ local function CreateGUI()
 		end
 		
 		InstallUninstallButton.MouseButton1Click:Connect(function()
-			if InstallUninstallButton.Text == "Uninstall" and isfile(PluginName..".iy") then
+			if InstallUninstallButton.Text == "Uninstall" then
 				RemovePlugin(PluginName)
 				PluginTitle.Text = PluginName
 				InstallUninstallButton.Text = "Install"
-			elseif InstallUninstallButton.Text == "Install" and not isfile(PluginName..".iy") then
+			elseif InstallUninstallButton.Text == "Install" then
 				DownloadPlugin(PluginName)
 				PluginTitle.Text = PluginName.." [<font color='rgb(0, 255, 0)'>Installed</font>]"
 				InstallUninstallButton.Text = "Uninstall"
