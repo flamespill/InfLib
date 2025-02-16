@@ -156,7 +156,7 @@ local function CreateGUI()
 	local HomeTab = self.TabHolder:WaitForChild("Home"); HomeTab.Visible = true
 	Tab_CreateText(HomeTab, "A library packed with Infinite Yield plugins, ready for instant download with just a click.")
 	Tab_CreateLine(HomeTab)
-	Tab_CreateText(HomeTab, "Would you like to submit your plugin, or report a bug?\nJoin the Discord!")
+	Tab_CreateText(HomeTab, "Would you like to submit your plugin, get your plugin removed, or report a bug?\nJoin the Discord!")
 	Tab_CreateText(HomeTab, "<b>"..DiscordLink.."</b>")
 
 	local CreditsTab = self.TabHolder:WaitForChild("Credits")
