@@ -1,4 +1,5 @@
 --[[
+NOTE: THIS IS NOT THE INFLIB PLUGIN, THIS IS A SCRIPT TO HELP YOU DOWNLOAD IT
 Once you have executed this, read the rest of the tutorial:
 https://github.com/flamespill/InfLib/blob/main/README.md#how-to-download
 ]]
