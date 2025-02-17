@@ -303,7 +303,7 @@ local function CreateGUI()
 		local searchText = PluginsTab_SearchBar.Text:lower()
 		for _, item in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
 			if item:IsA("TextLabel") then
-				item.Visible = string.find(item.Text:lower(), searchText) ~= nil
+				item.Visible = string.find(item.Name:lower(), searchText) ~= nil
 			end
 		end
 	end)
