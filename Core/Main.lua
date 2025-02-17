@@ -63,7 +63,7 @@ local function CreateGUI()
 	Title.Font = Enum.Font.SourceSans
 	Title.TextColor3 = ConfigColors.Text1
 	Title.TextSize = 14
-	Title.Text = PluginNameVersion
+	Title.Text = "Infinite Library v"..PluginVersion
 	Title.ZIndex = 2
 
 	do
