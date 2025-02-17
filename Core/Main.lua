@@ -405,7 +405,7 @@ local Plugin = {
 		["InfLib"] = {
 			["ListName"] = "InfLib";
 			["Description"] = "Opens the InfLib UI";
-			["Aliases"] = {"InfLib", "InfLibrary", "InfiniteLib"},
+			["Aliases"] = {"InfLib", "InfiniteLibrary", "Plugins"},
 			["Function"] = function()
 				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
