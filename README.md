@@ -3,12 +3,8 @@
 #### Would you like to submit your plugin, get your plugin removed, or report a bug? [Join the Discord!](https://discord.gg/nfkfKqUbGC)
 ###### *Inspired by Infinite Store/Infinite Shopping Mart*
 
-## How to Download
-###### If not already done, go to your File Explorer > View and enable "File name extensions"
-##### - Go to your exploit‘s "workspace" folder then add a file in it called "InfLib.txt"
-###### If you cannot find your workspace folder, do not beg for help, ask a more experienced friend or finally decide to be more independent and find it yourself.
-##### - Open it and put in this script:
-```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()```
-##### - Rename the file from "InfLib.txt" to "InfLib.iy", a pop-up will appear asking if you really want to change the filename extension, press Yes
-##### - Now execute Infinite Yield and input the following command: ‘addplugin InfLib‘ into the command bar
-##### - Now if you want to open the InfLib UI, do the ‘InfLib‘ command
+# How to Download
+##### Firstly, execute this script that creates the plugin file for you:
+```loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/InstallationHelper.lua"))()```
+##### Now go into a game, execute Infinite Yield and execute the following command: 'addplugin InfHub' (Do the exact capitalization on InfHub)
+##### Now if you want to open the InfLib UI, do the 'InfLib' or 'Plugins' command
