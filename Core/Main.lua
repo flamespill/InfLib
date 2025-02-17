@@ -10,7 +10,8 @@ local HttpService = cloneref(game:GetService("HttpService")) or game:GetService(
 
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
-	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..PluginName:gsub(" ", "%%20")..'"))()')
+	local URLFixedName = PluginName:gsub(" ", "%%20")
+	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..URLFixedName..'"))()')
 	addPlugin(PluginName)
 end
 
@@ -263,7 +264,8 @@ local function CreateGUI()
 		PluginsTab.Visible = true
 	end)
 	local function PluginInfoTab_Setup(pname)
-		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..pname:gsub(" ", "%%20")))()
+		local URLFixedName = pname:gsub(" ", "%%20")
+		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..URLFixedName))()
 
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
