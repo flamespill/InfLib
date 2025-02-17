@@ -1,7 +1,7 @@
 local Plugin = {
     ["PluginCreator"] = "ellllieee",
     ["PluginName"] = "TouchFling",
-    ["PluginDescription"] = "Adds a TouchFling Command",
+    ["PluginDescription"] = "Adds a TouchFling Command that flings unanchored parts",
     ["Commands"] = {
         ["touchfling"] = {
             ["ListName"] = "touchfling / tf",
