@@ -282,7 +282,7 @@ local function CreateGUI()
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
 
-		PluginName.Text = "<b>"..pname.."</b>"
+		PluginName.Text = "<b>"..pname.."</b>"; if isfile(pname..".iy") then PluginName.Text = PluginName.Text.." [<font color='rgb(0, 255, 0)'>Installed</font>]" end
 		PluginCreator.Text = "<b>Creator: </b>"..pcreator
 		PluginDescription.Text = pdesc
 		PluginInfoTab.Visible = true
