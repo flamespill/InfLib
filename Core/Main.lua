@@ -300,10 +300,9 @@ local function CreateGUI()
 	PluginsTab_ScrollingFrame_UIListLayout.SortOrder = Enum.SortOrder.Name
 
 	PluginsTab_SearchBar.Changed:Connect(function()
-		local searchText = PluginsTab_SearchBar.Text:lower()
-		for _, item in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
-			if item:IsA("TextLabel") then
-				item.Visible = string.find(item.Name:lower(), searchText) ~= nil
+		for i,v in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
+			if v:IsA("TextLabel") then
+				v.Visible = string.find(v.Name:lower(), PluginsTab_SearchBar.Text:lower()) ~= nil
 			end
 		end
 	end)
