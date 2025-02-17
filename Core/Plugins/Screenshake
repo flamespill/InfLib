@@ -1,7 +1,7 @@
 -- credits: some random devfourm and vr3million
 local Plugin = {
-    ["PluginCreator"] = "ScreenShake",
-    ["PluginName"] = "omarthebestman",
+    ["PluginCreator"] = "omarthebestman",
+    ["PluginName"] = "Screenshake",
     ["PluginDescription"] = "Shakes the screen",
     ["Commands"] = {
         ["ScreenShake"] = {
