@@ -385,14 +385,14 @@ local function CreateGUI()
 		end)
 
 	end
-
+	
+	for i,v in pairs(ScreenGui:GetDescendants()) do
+		v.Name = randomString()
+	end
+	
 	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList"))()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
-	end
-
-	for i,v in pairs(ScreenGui:GetDescendants()) do
-		v.Name = randomString()
 	end
 
 end
