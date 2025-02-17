@@ -188,6 +188,8 @@ local function CreateGUI()
 	-- Home
 	local HomeTab = Tab_AddTab("Home"); HomeTab.Visible = true
 	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
+		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
+		
 		for i,v in pairs(TabHolder:GetChildren()) do
 			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
 				v.Visible = false
@@ -409,9 +411,7 @@ local Plugin = {
 			["Function"] = function()
 				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
-				if not ScreenGui:FindFirstChildOfClass("Frame") then notify(PluginNameVersion, 'Hold on a sec'); CreateGUI() else
-					ScreenGui:FindFirstChildOfClass("Frame").Position = UDim2.new(0.5, -ScreenGui:FindFirstChildOfClass("Frame").Size.X.Offset / 2, 0.5, -ScreenGui:FindFirstChildOfClass("Frame").Size.Y.Offset / 2)
-				end
+				if not ScreenGui:FindFirstChildOfClass("Frame") then notify(PluginNameVersion, 'Hold on a sec'); CreateGUI() else end
 				ScreenGui.Enabled = not ScreenGui.Enabled
 
 			end
