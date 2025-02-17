@@ -1,177 +1,282 @@
-local VersionNumber = "0.0.1"
-local ILTitle = "InfLib v"..VersionNumber
+local PluginName = "InfLib"
+local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
+local PluginVersion = "1.0.0"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
+
+local PluginNameVersion = PluginName.." v"..PluginVersion
 
 local CoreGui = gethui() or cloneref(game:GetService("CoreGui")) or game:GetService("CoreGui")
 local HttpService = cloneref(game:GetService("HttpService")) or game:GetService("HttpService")
 
-local function DownloadPlugin(Name)
-	if isfile(Name..".iy") then notify(ILTitle, Name..' is already downloaded.') return end
-	writefile(Name..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..Name..'"))()')
-	addPlugin(Name)
+local function DownloadPlugin(PluginName)
+	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
+	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..PluginName..'"))()')
+	addPlugin(PluginName)
 end
 
-local function RemovePlugin(Name, Type)
-	if not isfile(Name..".iy") then notify(ILTitle, Name..' is not a downloaded plugin.') return end
-	deletePlugin(Name)
-	delfile(Name..".iy")
+local function RemovePlugin(PluginName)
+	if not isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is not a downloaded plugin.') return end
+	deletePlugin(PluginName)
+	delfile(PluginName..".iy")
 end
 
-local GUIName = randomString()
+local ScreenGui_Name = randomString()
+local ScreenGui = Instance.new("ScreenGui", CoreGui); ScreenGui.Name = ScreenGui_Name
+
+local ConfigColors = {
+	Shade1 = Color3.fromRGB(36, 36, 37),
+	Shade2 = Color3.fromRGB(46, 46, 47),
+	Shade3 = Color3.fromRGB(78,78,79),
+	Text1 = Color3.fromRGB(255, 255, 255),
+	Text2 = Color3.fromRGB(0, 0, 0),
+	Scroll = Color3.fromRGB(78,78,79)
+}
 
 local function CreateGUI()
-	notify(ILTitle, 'Hold on a sec')
 
-	self = {}
+	if isfile("IY_FE.iy") then
+		local UserConfig = HttpService:JSONDecode(readfile("IY_FE.iy"))
+		ConfigColors = {
+			Shade1 = Color3.new(UserConfig.currentShade1[1], UserConfig.currentShade1[2], UserConfig.currentShade1[3]) or Color3.fromRGB(36, 36, 37),
+			Shade2 = Color3.new(UserConfig.currentShade2[1], UserConfig.currentShade2[2], UserConfig.currentShade2[3]) or Color3.fromRGB(46, 46, 47),
+			Shade3 = Color3.new(UserConfig.currentShade3[1], UserConfig.currentShade3[2], UserConfig.currentShade3[3]) or Color3.fromRGB(78,78,79),
+			Text1 = Color3.new(UserConfig.currentText1[1], UserConfig.currentText1[2], UserConfig.currentText1[3]) or Color3.fromRGB(255, 255, 255),
+			Text2 = Color3.new(UserConfig.currentText2[1], UserConfig.currentText2[2], UserConfig.currentText2[3]) or Color3.fromRGB(0, 0, 0),
+			Scroll = Color3.new(UserConfig.currentScroll[1], UserConfig.currentScroll[2], UserConfig.currentScroll[3]) or Color3.fromRGB(78,78,79)
+		}
+	end
 
-	self.ScreenGui = Instance.new("ScreenGui", CoreGui)
-	self.ScreenGui.Name = GUIName
-	self.ScreenGui.IgnoreGuiInset = true; self.ScreenGui.ResetOnSpawn = false
+	ScreenGui.Enabled = false; ScreenGui.IgnoreGuiInset = true; ScreenGui.ResetOnSpawn = false
 
-	self.MainFrame = Instance.new("Frame", self.ScreenGui)
-	self.MainFrame.BackgroundColor3 = Color3.fromRGB(36, 36, 37)
-	self.MainFrame.BorderSizePixel = 0
-	self.MainFrame.Size = UDim2.new(0, 400, 0, 250)
-	self.MainFrame.Position = UDim2.new(0.5, -self.MainFrame.Size.X.Offset / 2, 0.5, -self.MainFrame.Size.Y.Offset / 2)
+	local MainFrame = Instance.new("Frame", ScreenGui)
+	MainFrame.BackgroundColor3 = ConfigColors.Shade1
+	MainFrame.BorderSizePixel = 0
+	MainFrame.Size = UDim2.new(0, 400, 0, 250)
+	MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
+	dragGUI(MainFrame)
 
-	self.Title = Instance.new("TextLabel", self.MainFrame)
-	self.Title.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
-	self.Title.BorderSizePixel = 0
-	self.Title.Size = UDim2.new(1, 0, 0, 20)
-	self.Title.Font = Enum.Font.SourceSans
-	self.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	self.Title.TextSize = 14
-	self.Title.Text = ILTitle
-	self.Title.ZIndex = 2
+	local Title = Instance.new("TextLabel", MainFrame)
+	Title.BackgroundColor3 = ConfigColors.Shade2
+	Title.BorderSizePixel = 0
+	Title.Size = UDim2.new(1, 0, 0, 20)
+	Title.Font = Enum.Font.SourceSans
+	Title.TextColor3 = ConfigColors.Text1
+	Title.TextSize = 14
+	Title.Text = PluginNameVersion
+	Title.ZIndex = 2
 
-	self.TabSelector = Instance.new("Frame", self.MainFrame)
-	self.TabSelector.AnchorPoint = Vector2.new(0, 1)
-	self.TabSelector.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
-	self.TabSelector.BorderSizePixel = 0
-	self.TabSelector.Position = UDim2.new(0, 0, 1, 0)
-	self.TabSelector.Size = UDim2.new(0, 100, 1, -20)
-	self.TabSelector.ClipsDescendants = true
+	do
+		local emoji = ({
+			["01 01"] = "🎆",
+			[(function(Year)
+				local A = math.floor(Year/100)
+				local B = math.floor((13+8*A)/25)
+				local C = (15-B+A-math.floor(A/4))%30
+				local D = (4+A-math.floor(A/4))%7
+				local E = (19*(Year%19)+C)%30
+				local F = (2*(Year%4)+4*(Year%7)+6*E+D)%7
+				local G = (22+E+F)
+				if E == 29 and F == 6 then
+					return "04 19"
+				elseif E == 28 and F == 6 then
+					return "04 18"
+				elseif 31 < G then
+					return ("04 %02d"):format(G-31)
+				end
+				return ("03 %02d"):format(G)
+			end)(tonumber(os.date"%Y"))] = "🥚",
+			["10 31"] = "🎃",
+			["12 25"] = "🎄"
+		})[os.date("%m %d")]
+		if emoji then
+			Title.Text = ("%s %s %s"):format(emoji, Title.Text, emoji)
+		end
+	end
 
-	self.TabSelector_UIListLayout = Instance.new("UIListLayout", self.TabSelector)
-	self.TabSelector_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-	self.TabSelector_UIPadding = Instance.new("UIPadding", self.TabSelector)
-	self.TabSelector_UIPadding.PaddingTop = UDim.new(0, 1)
-
-	self.TabHolder = Instance.new("Frame", self.MainFrame)
-	self.TabHolder.AnchorPoint = Vector2.new(0, 1)
-	self.TabHolder.BackgroundTransparency = 1
-	self.TabHolder.Position = UDim2.new(0, 100, 1, 0)
-	self.TabHolder.Size = UDim2.new(1, -100, 1, -20)
-	self.TabSelector.ClipsDescendants = true
-
-	self.CloseButton = Instance.new("ImageButton", self.Title)
-	self.CloseButton.AnchorPoint = Vector2.new(1, 0.5)
-	self.CloseButton.BackgroundTransparency = 1
-	self.CloseButton.Position = UDim2.new(1, -5, 0.5, 0)
-	self.CloseButton.Size = UDim2.new(0, 10, 0, 10)
-	self.CloseButton.Image = "rbxassetid://5054663650"
-	self.CloseButton.ZIndex = 10
-	self.CloseButton.MouseButton1Click:Connect(function()
-		self.ScreenGui.Enabled = not self.ScreenGui.Enabled
+	local CloseButton = Instance.new("ImageButton", Title)
+	CloseButton.AnchorPoint = Vector2.new(1, 0.5)
+	CloseButton.BackgroundTransparency = 1
+	CloseButton.Position = UDim2.new(1, -5, 0.5, 0)
+	CloseButton.Size = UDim2.new(0, 10, 0, 10)
+	CloseButton.Image = "rbxassetid://5054663650"
+	CloseButton.ZIndex = 10
+	CloseButton.MouseButton1Click:Connect(function()
+		ScreenGui.Enabled = not ScreenGui.Enabled
 	end)
 
-	dragGUI(self.MainFrame)
+	local TabSelector = Instance.new("Frame", MainFrame)
+	TabSelector.AnchorPoint = Vector2.new(0, 1)
+	TabSelector.BackgroundColor3 = ConfigColors.Shade2
+	TabSelector.BorderSizePixel = 0
+	TabSelector.Position = UDim2.new(0, 0, 1, 0)
+	TabSelector.Size = UDim2.new(0, 100, 1, -20)
+	TabSelector.ClipsDescendants = true
+	local TabSelector_UIListLayout = Instance.new("UIListLayout", TabSelector)
+	TabSelector_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	local TabSelector_UIPadding = Instance.new("UIPadding", TabSelector)
+	TabSelector_UIPadding.PaddingTop = UDim.new(0, 1)
 
-	for i,v in pairs(self.ScreenGui:GetDescendants()) do
-		v.Name = randomString()
+	local TabHolder = Instance.new("Frame", MainFrame)
+	TabHolder.AnchorPoint = Vector2.new(0, 1)
+	TabHolder.BackgroundTransparency = 1
+	TabHolder.Position = UDim2.new(0, 100, 1, 0)
+	TabHolder.Size = UDim2.new(1, -100, 1, -20)
+	TabHolder.ClipsDescendants = true
+	local TabHolder_UIPadding = Instance.new("UIPadding", TabHolder)
+	TabHolder_UIPadding.PaddingTop = UDim.new(0, 5)
+	TabHolder_UIPadding.PaddingBottom = UDim.new(0, 5)
+	TabHolder_UIPadding.PaddingLeft = UDim.new(0, 5)
+	TabHolder_UIPadding.PaddingRight = UDim.new(0, 5)
+
+	local function Tab_AddText(Tab, Text, TextSize)
+		local NewTextLabel = Instance.new("TextLabel", Tab)
+		NewTextLabel.BackgroundTransparency = 1
+		NewTextLabel.AutomaticSize = Enum.AutomaticSize.XY
+		NewTextLabel.Font = Enum.Font.SourceSans
+		NewTextLabel.TextWrapped = true
+		NewTextLabel.RichText = true
+		NewTextLabel.TextYAlignment = Enum.TextYAlignment.Top
+		NewTextLabel.TextXAlignment = Enum.TextXAlignment.Left
+		NewTextLabel.TextColor3 = ConfigColors.Text1
+		NewTextLabel.TextSize = TextSize or 14
+		NewTextLabel.Text = Text
 	end
 
-	local function Tab_CreateText(Tab, Text, TextSize)
-		local Title = Instance.new("TextLabel", Tab)
-		Title.BackgroundTransparency = 1
-		Title.Size = UDim2.new(0, 0, 0, 0)
-		Title.AutomaticSize = Enum.AutomaticSize.XY
-		Title.Font = Enum.Font.SourceSans
-		Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-		Title.TextSize = TextSize or 14
-		Title.RichText = true
-		Title.Text = Text
-		Title.TextWrapped = true
-		Title.TextXAlignment = Enum.TextXAlignment.Left
-	end
-
-	local function Tab_CreateLine(Tab)
+	local function Tab_AddLine(Tab)
 		local Line = Instance.new("Frame", Tab)
-		Line.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
+		Line.BackgroundColor3 = ConfigColors.Shade2
 		Line.BorderSizePixel = 0
 		Line.Size = UDim2.new(1, 0, 0, 1)
 	end
 
-	local function CreateTab(Name, Class)
-		local NewTabButton = Instance.new("TextButton", self.TabSelector)
-		NewTabButton.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
-		NewTabButton.BorderColor3 = Color3.fromRGB(36, 36, 37)
+	local function Tab_AddTab(TabName)
+		local NewTabButton = Instance.new("TextButton", TabSelector)
+		NewTabButton.BackgroundColor3 = ConfigColors.Shade2
+		NewTabButton.BorderColor3 = ConfigColors.Shade1
 		NewTabButton.Size = UDim2.new(1, 0, 0, 25)
 		NewTabButton.Font = Enum.Font.SourceSans
-		NewTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		NewTabButton.TextColor3 = ConfigColors.Text1
 		NewTabButton.TextSize = 14
-		NewTabButton.Text = Name
+		NewTabButton.Text = TabName
 
-		local NewTab
-		if Class == "ScrollingFrame" or not Class then
-			NewTab = Instance.new("ScrollingFrame", self.TabHolder)
-			NewTab.AutomaticCanvasSize = Enum.AutomaticSize.Y
-			NewTab.ScrollBarThickness = 0
-			NewTab.CanvasSize = UDim2.new(0, 0, 0, 0)
-		elseif Class == "Frame" then
-			NewTab = Instance.new("Frame", self.TabHolder)
-		end
-		NewTab.Name = Name
+		local NewTab = Instance.new("Frame", TabHolder)
+		NewTab.Name = TabName
+		NewTab.Visible = false
 		NewTab.BackgroundTransparency = 1
 		NewTab.Size = UDim2.new(1, 0, 1, 0)
-		NewTab.Visible = false
 		local NewTab_UIListLayout = Instance.new("UIListLayout", NewTab)
 		NewTab_UIListLayout.Padding = UDim.new(0, 5)
 		NewTab_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		local NewTab_UIPadding = Instance.new("UIPadding", NewTab)
-		NewTab_UIPadding.PaddingBottom = UDim.new(0, 5)
-		NewTab_UIPadding.PaddingLeft = UDim.new(0, 5)
-		NewTab_UIPadding.PaddingRight = UDim.new(0, 5)
-		NewTab_UIPadding.PaddingTop = UDim.new(0, 5)
 
-		Tab_CreateText(NewTab, "<b>"..Name.."</b>", 18)
-		Tab_CreateLine(NewTab)
+		Tab_AddText(NewTab, "<b>"..TabName.."</b>", 18)
+		Tab_AddLine(NewTab)
 
 		NewTabButton.MouseButton1Click:Connect(function()
-			for i,v in pairs(self.TabHolder:GetChildren()) do
-				if v:IsA("ScrollingFrame") or v:IsA("Frame") then
+			for i,v in pairs(TabHolder:GetChildren()) do
+				if v:IsA("Frame") or v:IsA("ScrollingFrame") then
 					v.Visible = false
 				end
 			end
 
 			NewTab.Visible = true
 		end)
+
+		return(NewTab)
 	end
 
-	CreateTab("Home", "ScrollingFrame")
-	CreateTab("Plugins", "Frame")
-	CreateTab("Credits", "ScrollingFrame")
+	-- Home
+	local HomeTab = Tab_AddTab("Home"); HomeTab.Visible = true
+	Tab_AddText(HomeTab, "A library packed with Infinite Yield plugins, ready for instant download with just a click.")
+	Tab_AddLine(HomeTab)
+	Tab_AddText(HomeTab, "Would you like to submit your plugin, get your plugin removed, or report a bug?\nJoin the Discord!")
+	Tab_AddText(HomeTab, "<b>"..DiscordLink.."</b>")
+	Tab_AddLine(HomeTab)
+	Tab_AddText(HomeTab, "This project is in desperate need of more plugins, please join the Discord and submit a plugin if you want to help the project.")
 
-	local HomeTab = self.TabHolder:WaitForChild("Home"); HomeTab.Visible = true
-	Tab_CreateText(HomeTab, "A library packed with Infinite Yield plugins, ready for instant download with just a click.")
-	Tab_CreateLine(HomeTab)
-	Tab_CreateText(HomeTab, "Would you like to submit your plugin, get your plugin removed, or report a bug?\nJoin the Discord!")
-	Tab_CreateText(HomeTab, "<b>"..DiscordLink.."</b>")
-	Tab_CreateLine(HomeTab)
-	Tab_CreateText(HomeTab, "This project is in desperate need of more plugins, please join the Discord and submit a plugin if you want to help the project.")
+	local PluginsTab = Tab_AddTab("Plugins")
 
-	local CreditsTab = self.TabHolder:WaitForChild("Credits")
-	Tab_CreateText(CreditsTab, "<b>flamespill</b> — Founder of InfLib")
-	Tab_CreateLine(CreditsTab)
-	Tab_CreateText(CreditsTab, "<b>Infinite Store</b> — The project that inspired InfLib!")
-	Tab_CreateLine(CreditsTab)
-	Tab_CreateText(CreditsTab, "<b>All Plugin Creators</b> — Thank you for being awesome!")
+	-- Credits
+	local CreditsTab = Tab_AddTab("Credits")
+	Tab_AddText(CreditsTab, "<b>flamespill</b> — Founder of InfLib")
+	Tab_AddLine(CreditsTab)
+	Tab_AddText(CreditsTab, "<b>Infinite Store</b> — The project that inspired InfLib")
+	Tab_AddLine(CreditsTab)
+	Tab_AddText(CreditsTab, "<b>All Plugin Creators</b> — Thank you for being awesome!")
 
-	local PluginsTab = self.TabHolder:WaitForChild("Plugins")
-	
+	-- Plugins
+	local PluginInfoTab = Instance.new("Frame", TabHolder)
+	PluginInfoTab.Name = "PluginInfoTab"
+	PluginInfoTab.Visible = false
+	PluginInfoTab.BackgroundTransparency = 1
+	PluginInfoTab.Size = UDim2.new(1, 0, 1, 0)
+	local NewTab_UIListLayout = Instance.new("UIListLayout", PluginInfoTab)
+	NewTab_UIListLayout.Padding = UDim.new(0, 5)
+	NewTab_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	local PluginName = Instance.new("TextLabel", PluginInfoTab)
+	PluginName.BackgroundTransparency = 1
+	PluginName.AutomaticSize = Enum.AutomaticSize.XY
+	PluginName.Font = Enum.Font.SourceSans
+	PluginName.TextWrapped = true
+	PluginName.RichText = true
+	PluginName.TextYAlignment = Enum.TextYAlignment.Top
+	PluginName.TextXAlignment = Enum.TextXAlignment.Left
+	PluginName.TextColor3 = ConfigColors.Text1
+	PluginName.TextSize = 18
+	local PluginCreator = Instance.new("TextLabel", PluginInfoTab)
+	PluginCreator.BackgroundTransparency = 1
+	PluginCreator.AutomaticSize = Enum.AutomaticSize.XY
+	PluginCreator.Font = Enum.Font.SourceSans
+	PluginCreator.TextWrapped = true
+	PluginCreator.RichText = true
+	PluginCreator.TextYAlignment = Enum.TextYAlignment.Top
+	PluginCreator.TextXAlignment = Enum.TextXAlignment.Left
+	PluginCreator.TextColor3 = ConfigColors.Text1
+	PluginCreator.TextSize = 14
+	Tab_AddLine(PluginInfoTab)
+	local PluginDescription = Instance.new("TextLabel", PluginInfoTab)
+	PluginDescription.BackgroundTransparency = 1
+	PluginDescription.AutomaticSize = Enum.AutomaticSize.XY
+	PluginDescription.Font = Enum.Font.SourceSans
+	PluginDescription.TextWrapped = true
+	PluginDescription.RichText = true
+	PluginDescription.TextYAlignment = Enum.TextYAlignment.Top
+	PluginDescription.TextXAlignment = Enum.TextXAlignment.Left
+	PluginDescription.TextColor3 = ConfigColors.Text1
+	PluginDescription.TextSize = 14
+	Tab_AddLine(PluginInfoTab)
+	local CloseButton = Instance.new("TextButton", PluginInfoTab)
+	CloseButton.Size = UDim2.new(0, 0, 0, 0)
+	CloseButton.AutomaticSize = Enum.AutomaticSize.XY
+	CloseButton.BackgroundColor3 = ConfigColors.Shade2
+	CloseButton.BorderSizePixel = 0
+	CloseButton.Font = Enum.Font.SourceSans
+	CloseButton.TextColor3 = ConfigColors.Text1
+	CloseButton.TextSize = 18
+	CloseButton.Text = "Close"
+	local CloseButton_UIPadding = Instance.new("UIPadding", CloseButton)
+	CloseButton_UIPadding.PaddingLeft = UDim.new(0, 12)
+	CloseButton_UIPadding.PaddingRight = UDim.new(0, 12)
+	CloseButton_UIPadding.PaddingTop = UDim.new(0, 6)
+	CloseButton_UIPadding.PaddingBottom = UDim.new(0, 6)
+	CloseButton.MouseButton1Click:Connect(function()
+		PluginInfoTab.Visible = false
+		PluginsTab.Visible = true
+	end)
+	local function PluginInfoTab_Setup(pname)
+		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..pname))()
+		
+		local pcreator = PluginInfo["PluginCreator"]
+		local pdesc = PluginInfo["PluginDescription"]
+		
+		PluginName.Text = "<b>"..pname.."</b>"
+		PluginCreator.Text = "<b>Creator: </b>"..pcreator
+		PluginDescription.Text = pdesc
+		PluginInfoTab.Visible = true
+		PluginsTab.Visible = false
+	end
+
 	local PluginsTab_SearchBar = Instance.new("TextBox", PluginsTab)
-	PluginsTab_SearchBar.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
+	PluginsTab_SearchBar.BackgroundColor3 = ConfigColors.Shade2
 	PluginsTab_SearchBar.BorderSizePixel = 0
 	PluginsTab_SearchBar.Size = UDim2.new(1, 0, 0, 20)
 	PluginsTab_SearchBar.Font = Enum.Font.SourceSans
@@ -179,7 +284,7 @@ local function CreateGUI()
 	PluginsTab_SearchBar.Text = ""
 	PluginsTab_SearchBar.PlaceholderColor3 = Color3.fromRGB(173, 173, 173)
 	PluginsTab_SearchBar.PlaceholderText = "Search for a Plugin"
-	PluginsTab_SearchBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+	PluginsTab_SearchBar.TextColor3 = ConfigColors.Text1
 	PluginsTab_SearchBar.ClearTextOnFocus = true
 	PluginsTab_SearchBar.TextWrapped = true
 	local PluginsTab_ScrollingFrame = Instance.new("ScrollingFrame", PluginsTab)
@@ -191,7 +296,7 @@ local function CreateGUI()
 	local PluginsTab_ScrollingFrame_UIListLayout = Instance.new("UIListLayout", PluginsTab_ScrollingFrame)
 	PluginsTab_ScrollingFrame_UIListLayout.Padding = UDim.new(0, 5)
 	PluginsTab_ScrollingFrame_UIListLayout.SortOrder = Enum.SortOrder.Name
-
+	
 	PluginsTab_SearchBar.Changed:Connect(function()
 		local searchText = PluginsTab_SearchBar.Text:lower()
 		for _, item in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
@@ -200,71 +305,16 @@ local function CreateGUI()
 			end
 		end
 	end)
-
-	
-	local PluginInfoTab = Instance.new("ScrollingFrame", self.TabHolder)
-	PluginInfoTab.Name = randomString()
-	PluginInfoTab.BackgroundTransparency = 1
-	PluginInfoTab.Size = UDim2.new(1, 0, 1, 0)
-	PluginInfoTab.Visible = false
-	PluginInfoTab.AutomaticCanvasSize = Enum.AutomaticSize.Y
-	PluginInfoTab.ScrollBarThickness = 0
-	PluginInfoTab.CanvasSize = UDim2.new(0, 0, 0, 0)
-	local PluginInfoTab_UIListLayout = Instance.new("UIListLayout", PluginInfoTab)
-	PluginInfoTab_UIListLayout.Padding = UDim.new(0, 5)
-	PluginInfoTab_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	local PluginInfoTab_UIPadding = Instance.new("UIPadding", PluginInfoTab)
-	PluginInfoTab_UIPadding.PaddingBottom = UDim.new(0, 5)
-	PluginInfoTab_UIPadding.PaddingLeft = UDim.new(0, 5)
-	PluginInfoTab_UIPadding.PaddingRight = UDim.new(0, 5)
-	PluginInfoTab_UIPadding.PaddingTop = UDim.new(0, 5)
-	
-	local function PluginsTab_Setup_DescriptionTab(PluginName)
-		for i,v in pairs(PluginInfoTab:GetChildren()) do
-			if v:IsA("TextLabel") or v:IsA("TextButton") or v:IsA("Frame") then
-				v:Destroy()
-			end
-		end
-		
-		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..PluginName))()
-		
-		Tab_CreateText(PluginInfoTab, "<b>"..PluginName.."</b>", 18)
-		Tab_CreateText(PluginInfoTab, "<b>Creator:</b> "..PluginInfo["PluginCreator"], 18)
-		Tab_CreateLine(PluginInfoTab)
-		Tab_CreateText(PluginInfoTab, PluginInfo["PluginDescription"], 14)
-		Tab_CreateLine(PluginInfoTab)
-		local CloseButton = Instance.new("TextButton", PluginInfoTab)
-		CloseButton.Size = UDim2.new(0, 0, 0, 0)
-		CloseButton.AutomaticSize = Enum.AutomaticSize.XY
-		CloseButton.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
-		CloseButton.BorderSizePixel = 0
-		CloseButton.Font = Enum.Font.SourceSans
-		CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		CloseButton.TextSize = 18
-		CloseButton.Text = "Close"
-		local CloseButton_UIPadding = Instance.new("UIPadding", CloseButton)
-		CloseButton_UIPadding.PaddingLeft = UDim.new(0, 9)
-		CloseButton_UIPadding.PaddingRight = UDim.new(0, 9)
-		CloseButton_UIPadding.PaddingTop = UDim.new(0, 6)
-		CloseButton_UIPadding.PaddingBottom = UDim.new(0, 6)
-		
-		CloseButton.MouseButton1Click:Connect(function()
-			PluginInfoTab.Visible = false
-			PluginsTab.Visible = true
-		end)
-		
-		PluginInfoTab.Visible = true
-		PluginsTab.Visible = false
-	end
 	
 	local function PluginsTab_AddPlugin(PluginName)
 		local PluginTitle = Instance.new("TextLabel", PluginsTab_ScrollingFrame)
-		PluginTitle.BackgroundColor3 = Color3.fromRGB(36, 36, 37)
+		PluginTitle.Name = PluginName
+		PluginTitle.BackgroundColor3 = ConfigColors.Shade1
 		PluginTitle.BackgroundTransparency = 0
-		PluginTitle.BorderColor3 = Color3.fromRGB(46, 46, 47)
+		PluginTitle.BorderColor3 = ConfigColors.Shade2
 		PluginTitle.Size = UDim2.new(1, 0, 0, 20)
 		PluginTitle.Font = Enum.Font.SourceSans
-		PluginTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+		PluginTitle.TextColor3 = ConfigColors.Text1
 		PluginTitle.TextSize = 14
 		PluginTitle.RichText = true
 		PluginTitle.Text = PluginName
@@ -276,42 +326,41 @@ local function CreateGUI()
 		PluginTitle_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		PluginTitle_UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 		PluginTitle_UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-		
+
 		local InformationButton = Instance.new("TextButton", PluginTitle)
 		InformationButton.Size = UDim2.new(0, 0,1, 0)
 		InformationButton.AutomaticSize = Enum.AutomaticSize.X
-		InformationButton.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
+		InformationButton.BackgroundColor3 = ConfigColors.Shade2
 		InformationButton.BorderSizePixel = 0
 		InformationButton.Font = Enum.Font.SourceSans
-		InformationButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		InformationButton.TextColor3 = ConfigColors.Text1
 		InformationButton.TextSize = 14
 		InformationButton.Text = "Info"
 		local InformationButton_UIPadding = Instance.new("UIPadding", InformationButton)
 		InformationButton_UIPadding.PaddingLeft = UDim.new(0, 6)
 		InformationButton_UIPadding.PaddingRight = UDim.new(0, 6)
-
 		InformationButton.MouseButton1Click:Connect(function()
-			PluginsTab_Setup_DescriptionTab(PluginName)
+			PluginInfoTab_Setup(PluginName)
 		end)
 		
 		local InstallUninstallButton = Instance.new("TextButton", PluginTitle)
 		InstallUninstallButton.Size = UDim2.new(0, 0,1, 0)
 		InstallUninstallButton.AutomaticSize = Enum.AutomaticSize.X
-		InstallUninstallButton.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
+		InstallUninstallButton.BackgroundColor3 = ConfigColors.Shade2
 		InstallUninstallButton.BorderSizePixel = 0
 		InstallUninstallButton.Font = Enum.Font.SourceSans
-		InstallUninstallButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		InstallUninstallButton.TextColor3 = ConfigColors.Text1
 		InstallUninstallButton.TextSize = 14
 		InstallUninstallButton.Text = "Install"
 		local InstallUninstallButton_UIPadding = Instance.new("UIPadding", InstallUninstallButton)
 		InstallUninstallButton_UIPadding.PaddingLeft = UDim.new(0, 6)
 		InstallUninstallButton_UIPadding.PaddingRight = UDim.new(0, 6)
-		
+
 		if isfile(PluginName..".iy") then
 			InstallUninstallButton.Text = "Uninstall"
 			PluginTitle.Text = PluginName.." [<font color='rgb(0, 255, 0)'>Installed</font>]"
 		end
-		
+
 		InstallUninstallButton.MouseButton1Click:Connect(function()
 			if InstallUninstallButton.Text == "Uninstall" then
 				RemovePlugin(PluginName)
@@ -330,42 +379,44 @@ local function CreateGUI()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
-end
-
-local function ResetGUI()
-	if CoreGui:FindFirstChild(GUIName) then
-		local MainFrame = CoreGui[GUIName]:FindFirstChildOfClass("Frame")
-		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
-
-		for i,Frame in pairs(MainFrame:GetDescendants()) do
-			if Frame.Name == "Home" then
-
-				for o,Tab in pairs(Frame.Parent:GetChildren()) do
-					if Tab:IsA("ScrollingFrame") or Tab:IsA("Frame") then
-						Tab.Visible = false
-					end
-				end
-
-				Frame.Visible = true
-
-			end
-		end
-
+	
+	for i,v in pairs(ScreenGui:GetDescendants()) do
+		v.Name = randomString()
 	end
+
 end
 
 local Plugin = {
-	["PluginName"] = ILTitle;
-	["PluginDescription"] = "A library packed with Infinite Yield plugins, ready for instant download with just a click.";
+	["PluginCreator"] = "flamespill";
+	["PluginName"] = PluginNameVersion;
+	["PluginDescription"] = PluginDescription;
 	["Commands"] = {
 		["InfLib"] = {
 			["ListName"] = "InfLib";
 			["Description"] = "Opens the InfLib UI";
-			["Aliases"] = {"InfLib", "InfiniteLibrary", "InfLibrary", "InfiniteLib"},
+			["Aliases"] = {"InfLib", "InfLibrary", "InfiniteLib"},
 			["Function"] = function()
-				if not writefileExploit() then notify(ILTitle, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
+				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
-				if CoreGui:FindFirstChild(GUIName) then ResetGUI(); CoreGui[GUIName].Enabled = not CoreGui[GUIName].Enabled return else CreateGUI() end
+				if not ScreenGui:FindFirstChildOfClass("Frame") then notify(PluginNameVersion, 'Hold on a sec'); CreateGUI() else
+					ScreenGui:FindFirstChildOfClass("Frame").Position = UDim2.new(0.5, -ScreenGui:FindFirstChildOfClass("Frame").Size.X.Offset / 2, 0.5, -ScreenGui:FindFirstChildOfClass("Frame").Size.Y.Offset / 2)
+				end
+				ScreenGui.Enabled = not ScreenGui.Enabled
+
+			end
+		},
+		["ReInfLib"] = {
+			["ListName"] = "ReInfLib";
+			["Description"] = "Refreshes the InfLib UI";
+			["Aliases"] = {"ReInfLib"},
+			["Function"] = function()
+				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
+
+				notify(PluginNameVersion, 'Hold on a sec')
+				ScreenGui:ClearAllChildren()
+				CreateGUI()
+				ScreenGui.Enabled = true
+
 			end
 		}
 	}
