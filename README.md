@@ -4,7 +4,8 @@
 ###### *Inspired by Infinite Store/Infinite Shopping Mart*
 
 # How to Download
-##### Firstly, execute this script that creates the plugin file for you:
+##### - Firstly, execute this script that creates the plugin file for you:
 ```loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/InstallationHelper.lua"))()```
-##### Now go into a game, execute Infinite Yield and execute the following command: 'addplugin InfHub' (Do the exact capitalization on InfHub)
-##### Now if you want to open the InfLib UI, do the 'InfLib' or 'Plugins' command
+##### - Now go into a game, execute Infinite Yield and execute the following command: 'addplugin InfHub' (Do the exact capitalization on InfHub)
+##### - Now if you want to open the InfLib UI, do the 'InfLib' or 'Plugins' command
+###### If the tutorial didn't work it was either a user error or your exploit is too weak.
