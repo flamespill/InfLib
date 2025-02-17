@@ -404,10 +404,10 @@ local Plugin = {
 	["PluginName"] = PluginNameVersion;
 	["PluginDescription"] = PluginDescription;
 	["Commands"] = {
-		["InfLib"] = {
+		["inflib"] = {
 			["ListName"] = "InfLib / Plugins";
 			["Description"] = "Opens the InfLib UI";
-			["Aliases"] = {"Plugins"},
+			["Aliases"] = {"plugins"},
 			["Function"] = function()
 				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
@@ -416,10 +416,10 @@ local Plugin = {
 
 			end
 		},
-		["ReInfLib"] = {
+		["reinflib"] = {
 			["ListName"] = "RefreshInfLib / ReInfLib";
 			["Description"] = "Refreshes the InfLib UI";
-			["Aliases"] = {"RefreshInfLib"},
+			["Aliases"] = {"refreshinflib"},
 			["Function"] = function()
 				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
