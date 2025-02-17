@@ -10,7 +10,7 @@ local HttpService = cloneref(game:GetService("HttpService")) or game:GetService(
 
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
-	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..PluginName..'"))()')
+	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..PluginName:gsub(" ", "%%20")..'"))()')
 	addPlugin(PluginName)
 end
 
@@ -263,11 +263,11 @@ local function CreateGUI()
 		PluginsTab.Visible = true
 	end)
 	local function PluginInfoTab_Setup(pname)
-		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..pname))()
-		
+		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..pname:gsub(" ", "%%20")))()
+
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
-		
+
 		PluginName.Text = "<b>"..pname.."</b>"
 		PluginCreator.Text = "<b>Creator: </b>"..pcreator
 		PluginDescription.Text = pdesc
@@ -296,7 +296,7 @@ local function CreateGUI()
 	local PluginsTab_ScrollingFrame_UIListLayout = Instance.new("UIListLayout", PluginsTab_ScrollingFrame)
 	PluginsTab_ScrollingFrame_UIListLayout.Padding = UDim.new(0, 5)
 	PluginsTab_ScrollingFrame_UIListLayout.SortOrder = Enum.SortOrder.Name
-	
+
 	PluginsTab_SearchBar.Changed:Connect(function()
 		local searchText = PluginsTab_SearchBar.Text:lower()
 		for _, item in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
@@ -305,7 +305,7 @@ local function CreateGUI()
 			end
 		end
 	end)
-	
+
 	local function PluginsTab_AddPlugin(PluginName)
 		local PluginTitle = Instance.new("TextLabel", PluginsTab_ScrollingFrame)
 		PluginTitle.Name = PluginName
@@ -342,7 +342,7 @@ local function CreateGUI()
 		InformationButton.MouseButton1Click:Connect(function()
 			PluginInfoTab_Setup(PluginName)
 		end)
-		
+
 		local InstallUninstallButton = Instance.new("TextButton", PluginTitle)
 		InstallUninstallButton.Size = UDim2.new(0, 0,1, 0)
 		InstallUninstallButton.AutomaticSize = Enum.AutomaticSize.X
@@ -372,14 +372,14 @@ local function CreateGUI()
 				InstallUninstallButton.Text = "Uninstall"
 			end
 		end)
-		
+
 	end
-	
+
 	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList"))()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
-	
+
 	for i,v in pairs(ScreenGui:GetDescendants()) do
 		v.Name = randomString()
 	end
