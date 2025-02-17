@@ -187,13 +187,23 @@ local function CreateGUI()
 
 	-- Home
 	local HomeTab = Tab_AddTab("Home"); HomeTab.Visible = true
+	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
+		for i,v in pairs(TabHolder:GetChildren()) do
+			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+				v.Visible = false
+			end
+		end
+		
+		HomeTab.Visible = true
+	end)
 	Tab_AddText(HomeTab, "A library packed with Infinite Yield plugins, ready for instant download with just a click.")
 	Tab_AddLine(HomeTab)
 	Tab_AddText(HomeTab, "Would you like to submit your plugin, get your plugin removed, or report a bug?\nJoin the Discord!")
 	Tab_AddText(HomeTab, "<b>"..DiscordLink.."</b>")
 	Tab_AddLine(HomeTab)
 	Tab_AddText(HomeTab, "This project is in desperate need of more plugins, please join the Discord and submit a plugin if you want to help the project.")
-
+	
+	
 	local PluginsTab = Tab_AddTab("Plugins")
 
 	-- Credits
