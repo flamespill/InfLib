@@ -2,7 +2,7 @@
 local Plugin = {
     ["PluginCreator"] = "omarthebestman",
     ["PluginName"] = "Screenshake",
-    ["PluginDescription"] = "Shakes the screen",
+    ["PluginDescription"] = "Adds a command that shakes your screen",
     ["Commands"] = {
         ["ScreenShake"] = {
             ["ListName"] = "screenshake [duration] [intensity] [fps]",
