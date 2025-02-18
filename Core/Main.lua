@@ -19,7 +19,7 @@ end
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
 	local URLFixedName = PluginName:gsub(" ", "%%20")
-	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..URLFixedName..'.luau"))()')
+	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..URLFixedName..'.lua"))()')
 	addPlugin(PluginName)
 end
 
@@ -197,13 +197,13 @@ local function CreateGUI()
 	local HomeTab = Tab_AddTab("Home"); HomeTab.Visible = true
 	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
 		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
-		
+
 		for i,v in pairs(TabHolder:GetChildren()) do
 			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
 				v.Visible = false
 			end
 		end
-		
+
 		HomeTab.Visible = true
 	end)
 	Tab_AddText(HomeTab, "A library packed with Infinite Yield plugins, ready for instant download with just a click.")
@@ -212,8 +212,8 @@ local function CreateGUI()
 	Tab_AddText(HomeTab, "<b>"..DiscordLink.."</b>")
 	Tab_AddLine(HomeTab)
 	Tab_AddText(HomeTab, "This project is in desperate need of more plugins, please join the Discord and submit a plugin if you want to help the project.")
-	
-	
+
+
 	local PluginsTab = Tab_AddTab("Plugins")
 
 	-- Credits
@@ -285,7 +285,7 @@ local function CreateGUI()
 	end)
 	local function PluginInfoTab_Setup(pname)
 		local URLFixedName = pname:gsub(" ", "%%20")
-		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..URLFixedName..".luau"))()
+		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..URLFixedName..".lua"))()
 
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
@@ -399,12 +399,12 @@ local function CreateGUI()
 		end)
 
 	end
-	
+
 	for i,v in pairs(ScreenGui:GetDescendants()) do
 		v.Name = randomString()
 	end
-	
-	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList.luau"))()
+
+	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList.lua"))()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
