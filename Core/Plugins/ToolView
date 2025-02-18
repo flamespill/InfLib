@@ -1,4 +1,5 @@
 local plugin = {
+	["PluginCreator"] = "No Information"; -- if you made this plugin plz dm me: flamespill
 	["PluginName"] = "Backpack Viewer";
 	["PluginDescription"] = "Creates a small popup, letting you see inside a player's backpack.";
 	["Commands"] = {
