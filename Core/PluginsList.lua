@@ -10,6 +10,5 @@ return {
 "BigHop",
 "AutoComplete",
 "Spectate GUI",
-"Facefuck",
-"Join JobId"
+"Facefuck"
 }
