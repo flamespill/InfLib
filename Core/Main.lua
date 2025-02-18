@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.0.0"
+local PluginVersion = "1.0.2"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
