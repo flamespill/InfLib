@@ -1,14 +1,14 @@
 return {
-"TouchFling",
-"Screenshake",
-"Zane's Aimbot",
-"ToolView",
-"Quickbar",
-"Chat Tag",
-"Vehicle Seat",
-"SmallHop",
-"BigHop",
-"AutoComplete",
-"Spectate GUI",
-"Facefuck"
+	"TouchFling",
+	"Screenshake",
+	"Zane's Aimbot",
+	"ToolView",
+	"Quickbar",
+	"Chat Tag",
+	"Vehicle Seat",
+	"SmallHop",
+	"BigHop",
+	"AutoComplete",
+	"Spectate GUI",
+	"Facefuck"
 }
