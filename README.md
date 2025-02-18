@@ -4,8 +4,11 @@
 ###### *Inspired by Infinite Store/Infinite Shopping Mart*
 
 # How to Download
-###### Do not execute Infinite Yield first!
-##### - Execute this script:
+###### ⚠️ Important: Do not execute Infinite Yield first!
+##### - Run the following script inside of your Executor:
 ```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()```
-##### - Now if you want to open the InfLib UI, do the 'InfLib' or 'Plugins' command
+##### - To open the InfLib UI, use either the InfLib or Plugins command.
 ###### If the tutorial didn't work it was either a user error or your exploit is too weak.
+# Troubleshooting:
+##### If the tutorial didn’t work, check that you followed all steps correctly.
+##### If the issue persists, your exploit might not be powerful enough to run this script.
