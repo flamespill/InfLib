@@ -16,7 +16,6 @@ if not IY_LOADED then
 	return
 end
 
-
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
 	local URLFixedName = PluginName:gsub(" ", "%%20")
