@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.0.3"
+local PluginVersion = "1.0.4"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
@@ -9,11 +9,20 @@ local CoreGui = gethui() or cloneref(game:GetService("CoreGui")) or game:GetServ
 local HttpService = cloneref(game:GetService("HttpService")) or game:GetService("HttpService")
 local StarterGui = cloneref(game:GetService("StarterGui")) or game:GetService("StarterGui")
 
+local GitHubPages = {
+	PluginScript = "https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Main.lua",
+	
+	PluginCoreScript = "https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua",
+	
+	PluginsList = "https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList.lua",
+	PluginRawScriptLink = "https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"
+}
+
 if not IY_LOADED then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	task.wait(1)
 	if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
-	writefile("InfLib.iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()')
+	writefile("InfLib.iy", 'return loadstring(game:HttpGet("'..GitHubPages.PluginCoreScript..'"))()')
 	addPlugin(PluginName)
 	return
 else
@@ -30,7 +39,7 @@ end
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
 	local URLFixedName = PluginName:gsub(" ", "%%20")
-	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/'..URLFixedName..'.lua"))()')
+	writefile(PluginName..".iy", 'return loadstring(game:HttpGet("'..GitHubPages.PluginRawScriptLink..URLFixedName..'.lua"))()')
 	addPlugin(PluginName)
 end
 
@@ -296,7 +305,7 @@ local function CreateGUI()
 	end)
 	local function PluginInfoTab_Setup(pname)
 		local URLFixedName = pname:gsub(" ", "%%20")
-		local PluginInfo = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Plugins/"..URLFixedName..".lua"))()
+		local PluginInfo = loadstring(game:HttpGetAsync(GitHubPages.PluginRawScriptLink..URLFixedName..".lua"))()
 
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
@@ -415,7 +424,7 @@ local function CreateGUI()
 		v.Name = randomString()
 	end
 
-	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList.lua"))()
+	local PluginsList = loadstring(game:HttpGetAsync(GitHubPages.PluginsList))()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
