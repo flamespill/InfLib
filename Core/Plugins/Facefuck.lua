@@ -5,7 +5,7 @@ local connections = {
 }
 local Facefuck = {
 
-    ["PluginCreator"] = "fetheris",
+    ["PluginCreator"] = "lordofmountain_",
     ["PluginName"] = "Face Fuck",
     ["PluginDescription"] = "Face fuck plugin",
     ["Commands"] = {
