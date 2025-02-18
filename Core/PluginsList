@@ -7,5 +7,6 @@ return {
 "Chat Tag",
 "Vehicle Seat",
 "SmallHop",
-"BigHop"
+"BigHop",
+"AutoComplete"
 }
