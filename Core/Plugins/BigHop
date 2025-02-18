@@ -1,0 +1,29 @@
+local Plugin = {
+	["PluginName"] = "shlexr",
+	["PluginName"] = "BigHop",
+	["PluginDescription"] = "better serverhop that joins largest available server",
+	["Commands"] = {
+		["sshop"] = {
+			["ListName"] = "smartserverhop",
+			["Description"] = "better serverhop that joins largest available server",
+			["Aliases"] = {"sshop","smartshop"},
+			["Function"] = function(args,speaker)
+				local highestnumber = 0
+				local srvs = {}
+				for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+					if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+						if v.playing > highestnumber then
+							highestnumber = v.playing
+							srvs[1] = v.id
+						end
+					end
+				end
+				if #srvs > 0 then
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, srvs[1])
+				end
+			end
+		},
+	}
+}
+
+return Plugin
