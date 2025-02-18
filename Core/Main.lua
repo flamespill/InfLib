@@ -11,7 +11,8 @@ local HttpService = cloneref(game:GetService("HttpService")) or game:GetService(
 if not IY_LOADED then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	task.wait(1)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/InstallationHelper.lua"))()
+	if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
+	writefile("InfLib.iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()')
 	addPlugin(PluginName)
 	return
 end
