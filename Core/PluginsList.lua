@@ -9,5 +9,6 @@ return {
 "SmallHop",
 "BigHop",
 "AutoComplete",
-"Spectate GUI"
+"Spectate GUI",
+"Facefuck"
 }
