@@ -4,5 +4,7 @@ return {
 "Zane's Aimbot",
 "ToolView",
 "Quickbar",
-"Chat Tag"
+"Chat Tag",
+"Vehicle Seat",
+"SmallHop"
 }
