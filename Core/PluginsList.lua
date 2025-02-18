@@ -8,5 +8,6 @@ return {
 "Vehicle Seat",
 "SmallHop",
 "BigHop",
-"AutoComplete"
+"AutoComplete",
+"Spectate GUI"
 }
