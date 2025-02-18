@@ -8,13 +8,14 @@ local PluginNameVersion = PluginName.." v"..PluginVersion
 local CoreGui = gethui() or cloneref(game:GetService("CoreGui")) or game:GetService("CoreGui")
 local HttpService = cloneref(game:GetService("HttpService")) or game:GetService("HttpService")
 
---[[
 if not IY_LOADED then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	task.wait(1)
-	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/InstallationHelper.lua"))()
+	addPlugin(PluginName)
+	return
 end
-]]
+
 
 local function DownloadPlugin(PluginName)
 	if isfile(PluginName..".iy") then notify(PluginNameVersion, PluginName..' is already downloaded.') return end
