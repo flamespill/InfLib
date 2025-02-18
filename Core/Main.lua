@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.0.2"
+local PluginVersion = "1.0.3"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
@@ -291,7 +291,7 @@ local function CreateGUI()
 		local pcreator = PluginInfo["PluginCreator"]
 		local pdesc = PluginInfo["PluginDescription"]
 
-		PluginName.Text = "<b>"..pname.."</b>"; if isfile(pname..".iy") then PluginName.Text = PluginName.Text.." [<font color='rgb(0, 255, 0)'>Installed</font>]" end
+		PluginName.Text = "<b>"..pname.."</b>"; if isfile(pname..".iy") then PluginName.Text = PluginName.Text.." [<b>✓</b> Installed]" end
 		PluginCreator.Text = "<b>Creator: </b>"..pcreator
 		PluginDescription.Text = pdesc
 		PluginInfoTab.Visible = true
@@ -384,7 +384,7 @@ local function CreateGUI()
 
 		if isfile(PluginName..".iy") then
 			InstallUninstallButton.Text = "Uninstall"
-			PluginTitle.Text = PluginName.." [<font color='rgb(0, 255, 0)'>Installed</font>]"
+			PluginTitle.Text = "<b>✓</b> "..PluginName
 		end
 
 		InstallUninstallButton.MouseButton1Click:Connect(function()
@@ -394,7 +394,7 @@ local function CreateGUI()
 				InstallUninstallButton.Text = "Install"
 			elseif InstallUninstallButton.Text == "Install" then
 				DownloadPlugin(PluginName)
-				PluginTitle.Text = PluginName.." [<font color='rgb(0, 255, 0)'>Installed</font>]"
+				PluginTitle.Text = "<b>✓</b> ".. PluginName
 				InstallUninstallButton.Text = "Uninstall"
 			end
 		end)
