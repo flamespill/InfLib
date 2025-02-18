@@ -21,7 +21,7 @@ else
 		StarterGui:SetCore("SendNotification", {
 			Title = PluginNameVersion,
 			Text = "Infinite Yield is already executed, installation will not work now. Rejoin and follow the How To Download on the GitHub Page.",
-			Duration = 10
+			Duration = 20
 		})
 		return
 	end
