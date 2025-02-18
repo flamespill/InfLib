@@ -4,7 +4,7 @@
 ###### *Inspired by Infinite Store/Infinite Shopping Mart*
 
 # How to Download
-###### DO NOT EXECUTE INFINITE YIELD FIRST
+###### Do not execute Infinite Yield first!
 ##### - Execute this script:
 ```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()```
 ##### - Now if you want to open the InfLib UI, do the 'InfLib' or 'Plugins' command
