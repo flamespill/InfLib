@@ -7,6 +7,7 @@ local PluginNameVersion = PluginName.." v"..PluginVersion
 
 local CoreGui = gethui() or cloneref(game:GetService("CoreGui")) or game:GetService("CoreGui")
 local HttpService = cloneref(game:GetService("HttpService")) or game:GetService("HttpService")
+local StarterGui = cloneref(game:GetService("StarterGui")) or game:GetService("StarterGui")
 
 if not IY_LOADED then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -15,6 +16,15 @@ if not IY_LOADED then
 	writefile("InfLib.iy", 'return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()')
 	addPlugin(PluginName)
 	return
+else
+	if not isfile("InfLib.iy") then
+		StarterGui:SetCore("SendNotification", {
+			Title = PluginNameVersion,
+			Text = "Infinite Yield is already executed, installation will not work now. Rejoin and follow the How To Download on the GitHub Page.",
+			Duration = 10
+		})
+		return
+	end
 end
 
 local function DownloadPlugin(PluginName)
