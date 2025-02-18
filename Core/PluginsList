@@ -6,5 +6,6 @@ return {
 "Quickbar",
 "Chat Tag",
 "Vehicle Seat",
-"SmallHop"
+"SmallHop",
+"BigHop"
 }
