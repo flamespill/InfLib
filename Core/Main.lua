@@ -305,8 +305,12 @@ local function CreateGUI()
 	PluginsTab_ScrollingFrame.BackgroundTransparency = 1
 	PluginsTab_ScrollingFrame.Size = UDim2.new(1, 0, 1, -64)
 	PluginsTab_ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
-	PluginsTab_ScrollingFrame.ScrollBarThickness = 0
 	PluginsTab_ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+	PluginsTab_ScrollingFrame.BorderSizePixel = 0
+	PluginsTab_ScrollingFrame.ScrollBarThickness = 8
+	PluginsTab_ScrollingFrame.TopImage = PluginsTab_ScrollingFrame.MidImage
+	PluginsTab_ScrollingFrame.BottomImage = PluginsTab_ScrollingFrame.MidImage
+	PluginsTab_ScrollingFrame.ScrollBarImageColor3 = ConfigColors.Scroll
 	local PluginsTab_ScrollingFrame_UIListLayout = Instance.new("UIListLayout", PluginsTab_ScrollingFrame)
 	PluginsTab_ScrollingFrame_UIListLayout.Padding = UDim.new(0, 5)
 	PluginsTab_ScrollingFrame_UIListLayout.SortOrder = Enum.SortOrder.Name
@@ -325,7 +329,7 @@ local function CreateGUI()
 		PluginTitle.BackgroundColor3 = ConfigColors.Shade1
 		PluginTitle.BackgroundTransparency = 0
 		PluginTitle.BorderColor3 = ConfigColors.Shade2
-		PluginTitle.Size = UDim2.new(1, 0, 0, 20)
+		PluginTitle.Size = UDim2.new(1, -10, 0, 20)
 		PluginTitle.Font = Enum.Font.SourceSans
 		PluginTitle.TextColor3 = ConfigColors.Text1
 		PluginTitle.TextSize = 14
