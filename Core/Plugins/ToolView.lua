@@ -1,6 +1,6 @@
 local Plugin = {
     ["PluginCreator"] = "weszin3",
-    ["PluginName"] = "ToolView",
+    ["PluginName"] = "Tool Viewer",
     ["PluginDescription"] = "view another player's tools",
     ["Commands"] = {
         ["toolview"] = {
