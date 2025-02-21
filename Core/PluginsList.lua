@@ -2,7 +2,6 @@ return {
 	"TouchFling",
 	"Screenshake",
 	"Zane's Aimbot",
-	"Tool Viewer",
 	"Quickbar",
 	"Chat Tag",
 	"VehicleSeat Commands",
@@ -15,5 +14,6 @@ return {
 	"BetterNotifySize",
 	"Neckbreaker",
 	"SpecificDance",
-	"Tween Flight"
+	"Tween Flight",
+	"Backpack Viewer"
 }
