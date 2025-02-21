@@ -23,6 +23,6 @@ end
 local Plugin = {
 	["PluginCreator"] = "flamespill",
 	["PluginName"] = "IYCleanUp",
-	["PluginDescription"] = "Deletes commands known not to work"
+	["PluginDescription"] = "Deletes commands known not to work."
 }
 return Plugin
