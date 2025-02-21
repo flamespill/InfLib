@@ -1,7 +1,7 @@
 local Plugin = {
     ["PluginCreator"] = "weszin3",
     ["PluginName"] = "Tool Viewer",
-    ["PluginDescription"] = "view another player's tools",
+    ["PluginDescription"] = "Adds a command that allows you to see another player's tools.",
     ["Commands"] = {
         ["toolview"] = {
             ["ListName"] = "toolview / tview [user]",
