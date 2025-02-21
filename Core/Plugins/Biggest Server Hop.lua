@@ -1,7 +1,7 @@
 local Plugin = {
 	["PluginCreator"] = "shlexr",
 	["PluginName"] = "Biggest Server Hop",
-	["PluginDescription"] = "better serverhop that joins largest available server",
+	["PluginDescription"] = "Joins the largest available server.",
 	["Commands"] = {
 		["bigserverhop"] = {
 			["ListName"] = "bigserverhop / bigshop",
