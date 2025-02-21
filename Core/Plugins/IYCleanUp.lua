@@ -10,7 +10,8 @@ local PatchedCommands = {
 	"fastbring",
 	"teleport",
 	"fastteleport",
-	"loopoof"
+	"loopoof",
+	"creeper"
 }
 
 for _,PatchedCommand in pairs(PatchedCommands) do
