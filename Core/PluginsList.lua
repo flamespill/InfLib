@@ -14,5 +14,6 @@ return {
 	"IYCleanUp",
 	"BetterNotifySize",
 	"Neckbreaker",
-	"SpecificDance"
+	"SpecificDance",
+	"Tween Flight"
 }
