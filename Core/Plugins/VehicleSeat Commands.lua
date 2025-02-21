@@ -4,7 +4,7 @@ end
 
 local plugin = {
     ["PluginCreator"] = "ffj2.0",
-    ["PluginName"] = "Vehicle Seat",
+    ["PluginName"] = "VehicleSeat Commands",
     ["PluginDescription"] = "Change your vehicle speed/torque (only works with vehicles using the default Roblox driving system, you need to be in the drivers seat)",
     ["Commands"] = {
         ["vehiclespeed"] = {
