@@ -376,7 +376,7 @@ end)
 return {
 	['PluginCreator'] = 'im_real.',
 	['PluginName'] = 'Quickbar',
-	['PluginDescription'] = 'Lets you quickly type commands using a new custom & simple command bar',
+	['PluginDescription'] = 'Lets you quickly type commands using a new custom & simple command bar.',
 	['Commands'] = {
 		['cmdbar'] = {
 			["ListName"] = "cmdbar",
