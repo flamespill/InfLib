@@ -13,5 +13,6 @@ return {
 	"Facefuck",
 	"IYCleanUp",
 	"BetterNotifySize",
-	"Neckbreaker"
+	"Neckbreaker",
+	"SpecificDance"
 }
