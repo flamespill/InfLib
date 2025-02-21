@@ -1,6 +1,6 @@
 local Plugin = {
 	["PluginCreator"] = "toonarch",
-	["PluginName"] = "SmallHop",
+	["PluginName"] = "Smallest Server Hop",
 	["PluginDescription"] = "Join the smallest server possible",
 	["Commands"] = {
 		["smallserverhop"] = {
