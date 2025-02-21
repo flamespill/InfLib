@@ -1,7 +1,7 @@
 local Plugin = {
     ["PluginCreator"] = "visiblename",
     ["PluginName"] = "ChatTag",
-    ["PluginDescription"] = "Adds a custom tag behind your username (client-sided)",
+    ["PluginDescription"] = "Adds a custom tag behind your username. (client-sided)",
     ["Commands"] = {
         ["Tag"] = {
             ["ListName"] = "Tag [color] [tagname]",
