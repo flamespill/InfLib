@@ -431,7 +431,7 @@ Gui.Frame.Middle.ImageButton.MouseButton1Click:Connect(toggle)
 return {
 	["PluginCreator"] = "toonarch",
 	["PluginName"] = "Spectate GUI",
-	["PluginDescription"] = "Adds a spectate gui",
+	["PluginDescription"] = "Adds a Spectate GUI similar to the ones in Roblox Games.",
 	Commands = {
 		spectategui = {
 			ListName = "spectategui",
