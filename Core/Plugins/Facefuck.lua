@@ -6,8 +6,8 @@ local connections = {
 local Facefuck = {
 
     ["PluginCreator"] = "lordofmountain_",
-    ["PluginName"] = "Face Fuck",
-    ["PluginDescription"] = "Face fuck plugin",
+    ["PluginName"] = "Facefuck",
+    ["PluginDescription"] = "Adds a command similar to the bang command, but does it to the other player's face.",
     ["Commands"] = {
         ["facefuck"] = {
             ["ListName"] = "facefuck (player)",
