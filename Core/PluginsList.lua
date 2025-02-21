@@ -12,5 +12,6 @@ return {
 	"Spectate GUI",
 	"Facefuck",
 	"IYCleanUp",
-	"BetterNotifySize"
+	"BetterNotifySize",
+	"Neckbreaker"
 }
