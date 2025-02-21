@@ -11,5 +11,6 @@ return {
 	"AutoComplete",
 	"Spectate GUI",
 	"Facefuck",
-	"IYCleanUp"
+	"IYCleanUp",
+	"BetterNotifySize"
 }
