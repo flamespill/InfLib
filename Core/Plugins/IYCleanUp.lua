@@ -21,7 +21,7 @@ for _,PatchedCommand in pairs(PatchedCommands) do
 end
 
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill", -- Discord UserId: 1018142081878851595
 	["PluginName"] = "IYCleanUp",
 	["PluginDescription"] = "Deletes commands known not to work."
 }
