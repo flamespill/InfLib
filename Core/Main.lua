@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.1.4"
+local PluginVersion = "1.1.5"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
@@ -333,7 +333,6 @@ local function CreateGUI()
 	PluginInfoTab_ButtonHolder_UIListLayout.Padding = UDim.new(0, 5)
 	PluginInfoTab_ButtonHolder_UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	PluginInfoTab_ButtonHolder_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	TabCreateElement.SeperationLine(PluginsTab_PluginInfoTab)
 	local PluginInfoTab_ButtonHolder = Instance.new("Frame", PluginsTab_PluginInfoTab)
 	PluginInfoTab_ButtonHolder.BackgroundTransparency = 1
 	PluginInfoTab_ButtonHolder.AutomaticSize = Enum.AutomaticSize.XY
