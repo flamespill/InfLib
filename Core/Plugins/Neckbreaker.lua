@@ -11,9 +11,9 @@ local Plugin = {
 	["Commands"] = {
 
 		["breakneck"] = {
-			["ListName"] = "breakneck / necksnap",
+			["ListName"] = "breakneck / necksnap / snapneck",
 			["Description"] = "Break your character's neck",
-			["Aliases"] = {"breakneck", "necksnap"},
+			["Aliases"] = {"breakneck", "necksnap", "snapneck"},
 			["Function"] = function(args,speaker)
 				if r15(speaker) then notify("Neckbreaker", "Your rig must be R6.") return end
 				
