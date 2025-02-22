@@ -1,5 +1,5 @@
 local Plugin = {
-	["PluginCreator"] = "shlexr",
+	["PluginCreator"] = "shlexr", -- Discord UserId: 837791888643588136
 	["PluginName"] = "Biggest Server Hop",
 	["PluginDescription"] = "Joins the largest available server.",
 	["Commands"] = {
