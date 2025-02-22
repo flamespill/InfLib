@@ -1,5 +1,5 @@
 local Plugin = {
-    ["PluginCreator"] = "ellllieee",
+    ["PluginCreator"] = "ellllieee", -- Discord UserId: 350562020883693569
     ["PluginName"] = "TouchFling",
     ["PluginDescription"] = "Adds a TouchFling Command that's superior to IY's WalkFling.",
     ["Commands"] = {
