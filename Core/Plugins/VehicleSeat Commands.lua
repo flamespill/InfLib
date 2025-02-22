@@ -3,7 +3,7 @@ local function notifyUser(message)
 end
 
 local plugin = {
-    ["PluginCreator"] = "ffj2.0",
+    ["PluginCreator"] = "ffj2.0", -- Discord UserId: 739679013773246486
     ["PluginName"] = "VehicleSeat Commands",
     ["PluginDescription"] = "Change your vehicle speed/torque (only works with vehicles using the default Roblox driving system, you need to be in the drivers seat)",
     ["Commands"] = {
