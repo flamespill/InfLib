@@ -28,7 +28,7 @@ local function PlayAnimation(Humanoid:Humanoid, AnimationId:number)
 end
 
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill", -- Discord UserId: 1018142081878851595
 	["PluginName"] = "SpecificDance",
 	["PluginDescription"] =
 	[[Allows you to choose specific animations from the dance command
