@@ -1,5 +1,5 @@
 local Plugin = {
-	["PluginCreator"] = "toonarch",
+	["PluginCreator"] = "toonarch", -- Discord UserId: 712521210302300161
 	["PluginName"] = "Smallest Server Hop",
 	["PluginDescription"] = "Joins the smallest available server.",
 	["Commands"] = {
