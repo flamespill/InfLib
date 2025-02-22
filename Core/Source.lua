@@ -16,12 +16,12 @@ if not IY_LOADED then
 	if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
 	local function DownloadInfLib()
-		writefile("InfLib.iy", 'return loadstring(game:HttpGet("'.."https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"..'"))()')
+		writefile("InfLib.iy", 'return loadstring(game:HttpGet("'.."https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Source.lua"..'"))()')
 		addPlugin("InfLib")
 	end
 
 	if isfile("InfLib.iy") then
-		if readfile("InfLib.iy") == 'return loadstring(game:HttpGet("'.."https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"..'"))()' then
+		if readfile("InfLib.iy") == 'return loadstring(game:HttpGet("'.."https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Source.lua"..'"))()' then
 			notify(PluginNameVersion, "InfLib is already set up, you don't have to run the installer. Use the command 'plugins'.")
 		else
 			DownloadInfLib()
