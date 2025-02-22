@@ -20,7 +20,7 @@ local Plugin = {
 				local Animation = PlayAnimation(speaker.Character:FindFirstChildOfClass("Humanoid"), 35154961)
 				Animation:Play()
 				Animation:AdjustSpeed(3)
-				task.wait(.65)
+				task.wait(.65) -- the reset being late is not a bug, ur ping is too high if that happens
 				execCmd("reset")
 			end
 		};
