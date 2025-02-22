@@ -492,12 +492,11 @@ local function CreateGUI()
 		PluginsTab_AddPlugin(v)
 	end
 	
-	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
+	ScreenGuiToggleReset = ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
 		for _,Tab in pairs(MainFrame_TabHolder:GetChildren()) do
 			if Tab:IsA("Frame") then Tab.Visible = false end
-			PluginsTab_PluginInfoTab.Visible = false
 		end
-		PluginsTab.Visible = true
+		PluginsTab.Visible = true; PluginsTab_PluginInfoTab.Visible = false
 		HomeTab.Parent.Visible = true
 		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
 	end)
@@ -540,6 +539,7 @@ local Plugin = {
 				if not writefileExploit() then notify(PluginNameVersion, "Your exploit doesn‘t support file functions, InfLib won‘t work.") return end
 
 				notify(PluginNameVersion, 'Hold on a sec')
+				ScreenGuiToggleReset:Disconnect()
 				ScreenGui:ClearAllChildren()
 				CreateGUI()
 				ScreenGui.Enabled = true
