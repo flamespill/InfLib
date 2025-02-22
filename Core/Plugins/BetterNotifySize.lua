@@ -22,7 +22,7 @@ elseif SizeType.ScaleFrame == true then
 end
 
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill",  -- Discord UserId: 1018142081878851595
 	["PluginName"] = "BetterNotifySize",
 	["PluginDescription"] = "Resizes Notifications to fit the content inside.",
 }
