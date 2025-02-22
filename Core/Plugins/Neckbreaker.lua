@@ -5,7 +5,7 @@ local function PlayAnimation(Humanoid:Humanoid, AnimationId:number)
 end
 
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill", -- Discord UserId: 1018142081878851595
 	["PluginName"] = "Neckbreaker",
 	["PluginDescription"] = "Adds a command that breaks your character's neck, that's it.",
 	["Commands"] = {
