@@ -5,7 +5,7 @@ local function PlayAnimation(Humanoid:Humanoid, AnimationId:number)
 end
 
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill", -- Discord UserId: 1018142081878851595
 	["PluginName"] = "Hug Tool",
 	["PluginDescription"] = "Adds a tool which you can use to hug people.",
 	["Commands"] = {
