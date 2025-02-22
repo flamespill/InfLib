@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.1.5"
+local PluginVersion = "1.1.6"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
@@ -93,10 +93,6 @@ local function CreateGUI()
 	MainFrame.Size = UDim2.new(0, 400, 0, 250)
 	MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
 	dragGUI(MainFrame)
-
-	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
-		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
-	end)
 
 	local MainFrame_Title = Instance.new("TextLabel", MainFrame)
 	MainFrame_Title.BackgroundColor3 = UIColors.Shade2
@@ -250,7 +246,7 @@ local function CreateGUI()
 	TabCreateElement.TextLabel(CreditsTab, "<b>All Plugin Creators</b> — Thank you for being awesome!", 14)	
 
 	-- Plugins Tab
-	
+
 	-- Searching
 	local SearchBar_Filter_Holder = Instance.new("Frame", PluginsTab)
 	SearchBar_Filter_Holder.BackgroundTransparency = 1
@@ -276,7 +272,7 @@ local function CreateGUI()
 	OpenFiltering.BackgroundColor3 = UIColors.Shade2
 	OpenFiltering.Image = "rbxassetid://7964618035"
 ]]
-	
+
 	local PluginsTab_ScrollingFrame = Instance.new("ScrollingFrame", PluginsTab)
 	PluginsTab_ScrollingFrame.BackgroundTransparency = 1
 	PluginsTab_ScrollingFrame.Size = UDim2.new(1, 0, 1, -64)
@@ -290,7 +286,7 @@ local function CreateGUI()
 	local PluginsTab_ScrollingFrame_UIListLayout = Instance.new("UIListLayout", PluginsTab_ScrollingFrame)
 	PluginsTab_ScrollingFrame_UIListLayout.Padding = UDim.new(0, 5)
 	PluginsTab_ScrollingFrame_UIListLayout.SortOrder = Enum.SortOrder.Name
-	
+
 	PluginsTab_SearchBar.Changed:Connect(function()
 		for i,v in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
 			if v:IsA("TextLabel") then
@@ -298,7 +294,7 @@ local function CreateGUI()
 			end
 		end
 	end)
-	
+
 	-- Plugin Info
 	local PluginsTab_PluginInfoTab = Instance.new("Frame", PluginsTab.Parent)
 	PluginsTab_PluginInfoTab.BackgroundTransparency = 1
@@ -340,7 +336,7 @@ local function CreateGUI()
 	PluginInfoTab_ButtonHolder_UIListLayout.Padding = UDim.new(0, 5)
 	PluginInfoTab_ButtonHolder_UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	PluginInfoTab_ButtonHolder_UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	
+
 	PluginsTab_SearchBar.Changed:Connect(function()
 		for i,v in pairs(PluginsTab_ScrollingFrame:GetChildren()) do
 			if v:IsA("TextLabel") then
@@ -348,7 +344,7 @@ local function CreateGUI()
 			end
 		end
 	end)
-	
+
 	local function SetUp_PluginsTab_PluginsInfoPage(PluginName:string, PluginsListTitle:TextLabel, PluginsListInstallUninstallButton:TextButton)
 		PluginsTab.Visible = false
 
@@ -416,9 +412,9 @@ local function CreateGUI()
 			PluginsTab.Visible = true
 			PluginsTab_PluginInfoTab.Visible = false
 		end)
-		
+
 		PluginsTab_PluginInfoTab.Visible = true
-		
+
 	end
 
 	local function PluginsTab_AddPlugin(PluginName)
@@ -467,16 +463,16 @@ local function CreateGUI()
 		local InstallUninstallButton_UIPadding = Instance.new("UIPadding", InstallUninstallButton)
 		InstallUninstallButton_UIPadding.PaddingLeft = UDim.new(0, 6)
 		InstallUninstallButton_UIPadding.PaddingRight = UDim.new(0, 6)
-		
+
 		InformationButton.MouseButton1Click:Connect(function()
 			SetUp_PluginsTab_PluginsInfoPage(PluginName, PluginTitle, InstallUninstallButton)
 		end)
-		
+
 		if isfile(PluginName..".iy") then
 			InstallUninstallButton.Text = "Uninstall"
 			PluginTitle.Text = "<b>✓</b> "..PluginName
 		end
-		
+
 		InstallUninstallButton.MouseButton1Click:Connect(function()
 			if InstallUninstallButton.Text == "Uninstall" then
 				DeletePlugin(PluginName)
@@ -490,11 +486,21 @@ local function CreateGUI()
 		end)
 
 	end
-	
+
 	local PluginsList = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/PluginsList.lua"))()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
+	
+	ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
+		for _,Tab in pairs(MainFrame_TabHolder:GetChildren()) do
+			if Tab:IsA("Frame") then Tab.Visible = false end
+			PluginsTab_PluginInfoTab.Visible = false
+		end
+		PluginsTab.Visible = true
+		HomeTab.Parent.Visible = true
+		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
+	end)
 	
 end
 
