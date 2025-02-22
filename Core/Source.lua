@@ -1,6 +1,6 @@
 local PluginName = "InfLib"
 local PluginDescription = "A library packed with Infinite Yield plugins, ready for instant download with just a click."
-local PluginVersion = "1.1.6"
+local PluginVersion = "1.1.7"
 local DiscordLink = "discord.gg/nfkfKqUbGC"
 
 local PluginNameVersion = PluginName.." v"..PluginVersion
@@ -406,7 +406,7 @@ local function CreateGUI()
 		ReloadButton.MouseButton1Click:Connect(function()
 			deletePlugin(PluginName)
 			wait(1)
-			addPlugin(PluginName)
+			DownloadPlugin(PluginName)
 		end)
 		CloseButton.MouseButton1Click:Connect(function()
 			PluginsTab.Visible = true
@@ -491,7 +491,7 @@ local function CreateGUI()
 	for i,v in ipairs(PluginsList) do
 		PluginsTab_AddPlugin(v)
 	end
-	
+
 	ScreenGuiToggleReset = ScreenGui:GetPropertyChangedSignal("Enabled"):Connect(function()
 		for _,Tab in pairs(MainFrame_TabHolder:GetChildren()) do
 			if Tab:IsA("Frame") then Tab.Visible = false end
@@ -500,7 +500,7 @@ local function CreateGUI()
 		HomeTab.Parent.Visible = true
 		MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
 	end)
-	
+
 end
 
 -- Anti-Self-Report
