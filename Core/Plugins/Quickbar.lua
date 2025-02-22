@@ -374,7 +374,7 @@ userInputService.InputBegan:Connect(function(input, gameProccesed)
 end)
 
 return {
-	['PluginCreator'] = 'im_real.',
+	['PluginCreator'] = 'im_real.', -- Discord UserId: 1036966866301767731
 	['PluginName'] = 'Quickbar',
 	['PluginDescription'] = 'Lets you quickly type commands using a new custom & simple command bar.',
 	['Commands'] = {
