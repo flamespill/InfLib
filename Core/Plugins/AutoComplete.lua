@@ -117,7 +117,7 @@ Cmdbar.Focused:Connect(function()
 end)
 
 return {
-    ["PluginCreator"] = "toonarch",
+    ["PluginCreator"] = "toonarch", -- Discord UserId: 712521210302300161
     ["PluginName"] = "AutoComplete",
     ["PluginDescription"] = "Adds back the IY Autocomplete from IY v5.3.2 which could help write out commands in the commandbar.",
     ["Commands"] = {}
