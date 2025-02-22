@@ -21,7 +21,7 @@ local Plugin = {
 				Animation:Play()
 				Animation:AdjustSpeed(3)
 				task.wait(.65)
-				speaker.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead) --execCmd("reset")
+				execCmd("reset")
 			end
 		};
 
