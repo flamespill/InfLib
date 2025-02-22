@@ -229,7 +229,7 @@ local mobileTfly = function(speaker, vTfly)
 end
 
 local Plugin = {
-	["PluginCreator"] = "cool.o2",
+	["PluginCreator"] = "cool.o2", -- Discord UserId: 871987887326003211
 	["PluginName"] = "Tween Flight",
 	["PluginDescription"] = "Let's you fly smoother, bypassing some anti-cheats.",
 	["Commands"] = {
