@@ -153,7 +153,7 @@ function GetClosestEnemyPlayer(TargetPart)
 end
 
 local Plugin = {
-    ["PluginCreator"] = "z4nec0des",
+    ["PluginCreator"] = "z4nec0des", -- Discord UserId: 752415530606133330
     ["PluginName"] = "Zane's Aimbot",
     ["PluginDescription"] = "Aimbot with various options such as team check, wall check, and movement prediction.",
     ["Commands"] = {
