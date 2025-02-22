@@ -5,7 +5,7 @@ local connections = {
 }
 local Facefuck = {
 
-    ["PluginCreator"] = "lordofmountain_",
+    ["PluginCreator"] = "lordofmountain_", -- Discord UserId: 1212781365259403326
     ["PluginName"] = "Facefuck",
     ["PluginDescription"] = "Adds a command similar to the bang command, but does it to the other player's face.",
     ["Commands"] = {
