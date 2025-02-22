@@ -429,7 +429,7 @@ end
 Gui.Frame.Middle.ImageButton.MouseButton1Click:Connect(toggle)
 
 return {
-	["PluginCreator"] = "toonarch",
+	["PluginCreator"] = "toonarch", -- Discord UserId: 712521210302300161
 	["PluginName"] = "Spectate GUI",
 	["PluginDescription"] = "Adds a Spectate GUI similar to the ones in Roblox Games.",
 	Commands = {
