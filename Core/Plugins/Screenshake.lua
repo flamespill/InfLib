@@ -1,6 +1,6 @@
 -- credits: some random devfourm and vr3million
 local Plugin = {
-    ["PluginCreator"] = "omarthebestman",
+    ["PluginCreator"] = "omarthebestman", -- Discord UserId: 1276903633736306770
     ["PluginName"] = "Screenshake",
     ["PluginDescription"] = "Adds a command that shakes your screen.",
     ["Commands"] = {
