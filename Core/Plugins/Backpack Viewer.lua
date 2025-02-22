@@ -1,5 +1,5 @@
 local plugin = {
-	["PluginCreator"] = "/";
+	["PluginCreator"] = "/";  -- Discord UserId: Unknown
 	["PluginName"] = "Backpack Viewer";
 	["PluginDescription"] = "Creates a small popup, letting you see inside a player's backpack.";
 	["Commands"] = {
