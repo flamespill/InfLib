@@ -1,5 +1,5 @@
 local Plugin = {
-    ["PluginCreator"] = "visiblename",
+    ["PluginCreator"] = "visiblename", -- Discord UserId: 1186062920988241996
     ["PluginName"] = "ChatTag",
     ["PluginDescription"] = "Adds a custom tag behind your username. (client-sided)",
     ["Commands"] = {
