@@ -1,6 +1,7 @@
 # Infinite Library
 ### A library packed with Infinite Yield plugins, ready for instant download with just a click.
 #### Would you like to submit your plugin, get your plugin removed, or report a bug? [Join the Discord!](https://discord.gg/nfkfKqUbGC)
+#### Website: [Infinite Library](https://inflibrary.github.io/)
 ###### *Inspired by Infinite Store/Infinite Shopping Mart*
 
 # How to Download
