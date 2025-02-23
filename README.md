@@ -7,7 +7,7 @@
 # How to Download
 ###### ⚠️ Important: Do not execute Infinite Yield first!
 ##### - Run the following script inside of your Exploit:
-```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Main.lua"))()```
+```return loadstring(game:HttpGet("https://raw.githubusercontent.com/flamespill/InfLib/refs/heads/main/Core/Source.lua"))()```
 ##### - To open the InfLib UI, use either the InfLib or Plugins command.
 # Troubleshooting:
 ##### If the tutorial didn’t work, check that you followed all steps correctly.
