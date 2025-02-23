@@ -16,5 +16,6 @@ return {
 	"SpecificDance",
 	"Tween Flight",
 	"Backpack Viewer",
-	"Hug Tool"
+	"Hug Tool",
+	"Beyblade"
 }
