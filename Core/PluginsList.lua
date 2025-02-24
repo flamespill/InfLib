@@ -1,5 +1,4 @@
 return {
-	"Screenshake",
 	"Zane's Aimbot",
 	"Quickbar",
 	"Chat Tag",
