@@ -1,20 +1,3 @@
 return {
-	"Zane's Aimbot",
-	"Quickbar",
-	"Chat Tag",
-	"VehicleSeat Commands",
-	"Smallest Server Hop",
-	"Biggest Server Hop",
-	"AutoComplete",
-	"Spectate GUI",
-	"Facefuck",
-	"IYCleanUp",
-	"BetterNotifySize",
-	"Neckbreaker",
-	"SpecificDance",
-	"Tween Flight",
-	"Backpack Viewer",
-	"Hug Tool",
-	"Beyblade",
 	"BringModel"
 }
