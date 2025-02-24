@@ -1,5 +1,5 @@
 local Plugin = {
-	["PluginCreator"] = "flamespill",
+	["PluginCreator"] = "flamespill", -- Discord UserId: 1018142081878851595
 	["PluginName"] = "Beyblade",
 	["PluginDescription"] = "Turns you into a beyblade, allowing you to spin around and fling players.",
 	["Commands"] = {
