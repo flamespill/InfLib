@@ -16,5 +16,6 @@ return {
 	"Tween Flight",
 	"Backpack Viewer",
 	"Hug Tool",
-	"Beyblade"
+	"Beyblade",
+	"BringModel"
 }
