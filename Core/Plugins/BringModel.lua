@@ -1,7 +1,7 @@
 local Plugin = {
 	["PluginCreator"] = "flamespill",
 	["PluginName"] = "BringModel",
-	["PluginDescription"] = "Adds a bringmodel to Infinite Yield, behaving like bringpart but for models.",
+	["PluginDescription"] = "Adds a bringmodel to Infinite Yield, behaving like bringpart but for models. (CLIENT)",
 	["Commands"] = {
 		["bringmodel"] = {
 			["ListName"] = "bringmodel [model name] (CLIENT)",
