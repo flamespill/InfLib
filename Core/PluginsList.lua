@@ -5,5 +5,6 @@ return {
 	"Tween Fly",
 	"Biggest Server Hop",
 	"Smallest Server Hop",
-	"Beyblade"
+	"Beyblade",
+"Backpack Viewer"
 }
