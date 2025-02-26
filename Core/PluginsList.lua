@@ -3,7 +3,7 @@ return {
 	"Beyblade",
 	"BringModel",
 	"Neckbreaker",
-	"Smallest or Biggest Server Hop",
+	"Smallest and Biggest Server Hop",
 	"Specific Dance",
 	"Tween Fly"
 }
