@@ -44,7 +44,7 @@ else
 end
 
 local function SetLinkCompatible(Link:string)
-	return Link:gsub(" ", "%%20")
+	return Link:gsub(" ", "%%20"):gsub("%+", "%%2B")
 end
 
 local function DownloadPlugin(PluginName:string)	
