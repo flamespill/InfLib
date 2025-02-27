@@ -5,5 +5,6 @@ return {
 	"Neckbreaker",
 	"Smallest and Biggest Server Hop",
 	"Specific Dance",
-	"Tween Fly"
+	"Tween Fly",
+	"ModelCMDs+"
 }
