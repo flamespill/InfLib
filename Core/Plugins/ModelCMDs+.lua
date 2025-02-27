@@ -22,7 +22,7 @@ end
 local Plugin = {
 	["PluginCreator"] = "flamespill",
 	["PluginName"] = "ModelCMDs+",
-	["PluginDescription"] = "Adds more commands regarding models (bringmdel, viewmodel, etc.)",
+	["PluginDescription"] = "Adds more commands regarding models (bringmodel, viewmodel, etc.)",
 	["Commands"] = {
 		["viewmodel"] = {
 			["ListName"] = "viewmodel / viewm [model name]",
