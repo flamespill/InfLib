@@ -1,6 +1,6 @@
 local Plugin = {
 	["PluginCreator"] = "toonarch and shlexr", -- Discord UserId: 712521210302300161, 837791888643588136
-	["PluginName"] = "Smallest/Biggest Server Hop",
+	["PluginName"] = "Smallest + Biggest Server Hop",
 	["PluginDescription"] = "Join the smallest or biggest available server. Might not work on games with more servers.",
 	["Commands"] = {
 		["smallserverhop"] = {
