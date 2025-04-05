@@ -6,5 +6,6 @@ return {
 	"Specific Dance",
 	"Tween Fly",
 	"ModelCMDs+",
-	"SpectateGui"
+	"SpectateGui",
+	"PlaceFinder"
 }
